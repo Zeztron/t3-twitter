@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import Image from 'next/image';
 import { type RouterOutputs } from '~/utils/api';
 
 dayjs.extend(relativeTime);
@@ -10,10 +11,12 @@ const Post = (props: PostWithUser) => {
   const { post, author } = props;
   return (
     <div className='flex gap-3 border-b border-slate-400 p-4'>
-      <img
+      <Image
         src={author.profileImageUrl}
+        width={56}
+        height={56}
         className='h-10 w-10 rounded-full'
-        alt='Profile Image'
+        alt={`${author.username}'s profile image`}
       />
       <div className='flex flex-col'>
         <div className='flex gap-x-1'>

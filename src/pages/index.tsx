@@ -1,6 +1,7 @@
 import { SignInButton, useUser } from '@clerk/nextjs';
 import { type NextPage } from 'next';
 import Head from 'next/head';
+import { Loader2 } from 'lucide-react';
 import { api } from '~/utils/api';
 import Post from '../components/Post';
 import CreatePost from '~/components/CreatePost';
@@ -28,8 +29,8 @@ const Home: NextPage = () => {
           </div>
           <div className='flex flex-col'>
             {isLoading && (
-              <div className='flex items-center justify-center p-8'>
-                Loading...
+              <div className='flex h-screen items-center justify-center p-8'>
+                <Loader2 className='h-6 w-6 animate-spin' color='#1DA1F2' />
               </div>
             )}
             {data?.map(({ post, author }) => (

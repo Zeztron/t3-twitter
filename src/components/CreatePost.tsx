@@ -1,9 +1,12 @@
+import Image from 'next/image';
 import React from 'react';
 
 const CreatePost = (profileImageUrl: string) => {
   return (
     <div className='flex w-full gap-3'>
-      <img
+      <Image
+        width={56}
+        height={56}
         src={profileImageUrl}
         alt='Profile Image'
         className='h-10 w-10 rounded-full'

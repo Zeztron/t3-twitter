@@ -19,6 +19,7 @@ specifiers:
   dayjs: ^1.11.7
   eslint: ^8.34.0
   eslint-config-next: ^13.2.1
+  lucide-react: ^0.127.0
   next: ^13.2.1
   postcss: ^8.4.14
   prettier: ^2.8.1
@@ -40,6 +41,7 @@ dependencies:
   '@trpc/react-query': 10.18.0_rcvfzig2xktluz4p7kugxqlbwi
   '@trpc/server': 10.18.0
   dayjs: 1.11.7
+  lucide-react: 0.127.0_react@18.2.0
   next: 13.2.4_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -2163,6 +2165,14 @@ packages:
     dependencies:
       yallist: 4.0.0
     dev: true
+
+  /lucide-react/0.127.0_react@18.2.0:
+    resolution: {integrity: sha512-9xxwl2FbdwWDjB0L6FEsOSbeOVp7Pj+L3urz+xDJNx1xggmQgGjeKDJQ28i/9ON8rV9HaqwQveBtsYnHqtWLqg==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /map-obj/4.3.0:
     resolution: {integrity: sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==}
