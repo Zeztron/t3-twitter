@@ -30,7 +30,7 @@ const Home: NextPage = () => {
           <div className='flex flex-col'>
             {isLoading && (
               <div className='flex h-screen items-center justify-center p-8'>
-                <Loader2 className='h-6 w-6 animate-spin' color='#1DA1F2' />
+                <Loader2 className='h-8 w-8 animate-spin' color='#1DA1F2' />
               </div>
             )}
             {data?.map(({ post, author }) => (

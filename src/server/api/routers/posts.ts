@@ -37,8 +37,8 @@ const postsRouter = createTRPCRouter({
         author: {
           ...author,
           username: author.username,
-          firstName: author.firstName
-        }
+          firstName: author.firstName,
+        },
       };
     });
   }),
