@@ -1,5 +1,7 @@
+import { Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { api } from '~/utils/api';
 
 interface CreatePostProps {
@@ -15,6 +17,15 @@ const CreatePost: React.FC<CreatePostProps> = ({ profileImageUrl }) => {
     onSuccess: () => {
       setInput('');
       ctx.posts.getAll.invalidate();
+    },
+    onError: (e) => {
+      const errorMessage = e.data?.zodError?.fieldErrors.content;
+
+      if (errorMessage && errorMessage[0]) {
+        toast.error(errorMessage[0]!);
+      } else {
+        toast.error('Failed to post! Please try again later.');
+      }
     },
   });
 
@@ -35,7 +46,14 @@ const CreatePost: React.FC<CreatePostProps> = ({ profileImageUrl }) => {
         onChange={(e) => setInput(e.target.value)}
         disabled={isPosting}
       />
-      <button onClick={() => mutate({ content: input })}>Post</button>
+      {!isPosting && input && (
+        <button disabled={isPosting} onClick={() => mutate({ content: input })}>
+          Post
+        </button>
+      )}
+      {isPosting && (
+        <Loader2 className='h-6 w-6 animate-spin' color='#1DA1F2' />
+      )}
     </div>
   );
 };
