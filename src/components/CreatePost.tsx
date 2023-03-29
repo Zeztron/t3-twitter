@@ -1,7 +1,23 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
+import { api } from '~/utils/api';
 
-const CreatePost = (profileImageUrl: string) => {
+interface CreatePostProps {
+  profileImageUrl: string;
+}
+
+const CreatePost: React.FC<CreatePostProps> = ({ profileImageUrl }) => {
+  const [input, setInput] = useState<string>('');
+
+  const ctx = api.useContext();
+
+  const { mutate, isLoading: isPosting } = api.posts.create.useMutation({
+    onSuccess: () => {
+      setInput('');
+      ctx.posts.getAll.invalidate();
+    },
+  });
+
   return (
     <div className='flex w-full gap-3'>
       <Image
@@ -13,8 +29,13 @@ const CreatePost = (profileImageUrl: string) => {
       />
       <input
         placeholder='Type some emojis!'
-        className='flex-grow bg-transparent outline-none'
+        className='grow bg-transparent outline-none'
+        type='text'
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        disabled={isPosting}
       />
+      <button onClick={() => mutate({ content: input })}>Post</button>
     </div>
   );
 };

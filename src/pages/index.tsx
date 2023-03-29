@@ -25,7 +25,9 @@ const Home: NextPage = () => {
                 <SignInButton />
               </div>
             )}
-            {user.isSignedIn && CreatePost(user.user.profileImageUrl)}
+            {user.isSignedIn && (
+              <CreatePost profileImageUrl={user.user.profileImageUrl} />
+            )}
           </div>
           <div className='flex flex-col'>
             {isLoading && (
